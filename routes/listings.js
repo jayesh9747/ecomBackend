@@ -64,9 +64,10 @@ const maxCount = 5;
 
 router.get('/',async(req,res)=>{
   try {
-    const listing = Listing.find({});
-
-    const reources = Category.find();
+    const listing = Listing.find({})
+    .populate('category')
+    .exec();
+    res.json(listing);
   } catch (error) {
     res.status(404);
     return res.json(errorFunction(true, "there is no such a list"));
