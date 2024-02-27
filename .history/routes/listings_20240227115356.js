@@ -64,8 +64,8 @@ const maxCount = 5;
 
 router.get('/',async(req,res)=>{
   try {
-    const listing = await Listing.find()
-    .populate('CategoryId')
+    const listing = Listing.find({})
+    .populate('categoryCategoryId')
     .exec();
     res.json(listing);
   } catch (error) {
